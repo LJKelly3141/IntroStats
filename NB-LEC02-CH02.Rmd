@@ -1,0 +1,121 @@
+---
+knit: (function(inputFile, encoding) {
+    rmarkdown::render(inputFile, encoding = encoding, output_dir = "../docs/")
+  })
+title: "Module 2 Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Chapter 2
+
+## 2.1 Stem-and-Leaf Graphs (Stemplots), Line Graphs, and Bar Graphs
+
+### Example 2.1
+```{r}
+scores <- c(33, 42, 49, 49, 53, 55, 55, 61, 63, 67, 68, 68, 69, 69, 72, 73, 74, 78, 80, 83, 88, 88, 88, 90, 92, 94, 94, 94, 94, 96, 100)
+hist(scores)
+```
+
+### Try it 2.1
+```{r}
+base.ball.scores <- c(32, 32, 33, 34, 38, 40, 42, 42, 43, 44, 46, 47, 47, 48, 48, 48, 49, 50, 50, 51, 52, 52, 52, 53, 54, 56, 57, 57, 60, 61)
+hist(base.ball.scores)
+```
+
+### Example 2.4
+
+```{r}
+teenage.reminder <- data.frame("number.reminders" = 0:5,
+        "frequency" = c(2,5,8,14,7,4)
+        )
+teenage.reminder 
+
+plot(teenage.reminder,type="l")
+barplot(height=teenage.reminder$frequency,names.arg = teenage.reminder$number.reminders)
+```
+
+
+## 2.2 Histograms, Frequency Polygons, and Time Series Graphs
+
+### Example 2.7
+```{r}
+footballer.height <- c(60, 60.5, 61, 61, 61.5,63.5, 63.5, 63.5, 64, 64, 64, 64, 64, 64, 64, 64.5, 64.5, 64.5, 64.5, 64.5, 64.5, 64.5, 64.5, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66.5, 66.5, 66.5, 66.5, 66.5, 66.5, 66.5, 66.5, 66.5, 66.5, 66.5, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67.5, 67.5, 67.5, 67.5, 67.5, 67.5, 67.5, 68, 68, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69.5, 69.5, 69.5, 69.5, 69.5,70, 70, 70, 70, 70, 70, 70.5, 70.5, 70.5, 71, 71, 71, 72, 72, 72, 72.5, 72.5, 73, 73.5, 74)
+
+hist(footballer.height,breaks = 15,freq=F,ylim=c(0,.3))
+```
+
+```{r}
+
+vid.game <- c(9.95, 10, 2.25, 16.75, 0, 19.5, 22.5, 7.5, 15, 12.75, 5.5, 11, 10, 20.75, 17.5, 23, 21.9, 24, 23.75, 18, 20, 15, 22.9, 18.8, 20.5)
+hist(vid.game)
+```
+
+
+### Try it 2.12
+
+```{r}
+co2 <- data.frame(
+  "year" = 2003:2008,
+  "Ukraine" = c(352259,NA,339029,339029,327797,328357),
+  "United.States" = c(5681664,5790761,5826394,5737615,5828697,5656839)
+) 
+co2
+plot(y=co2$United.States,x=co2$year,type="l")
+```
+
+
+## 2.3 Measures of the Location of the Data
+
+### Example 2.13
+
+```{r}
+
+house.prices <- c(389950, 230500, 158000, 479000, 639000, 114950, 5500000, 387000, 659000, 529000, 575000, 488800, 1095000)
+quantile(house.prices)
+
+```
+
+## 2.4 Box Plots
+
+### Example 2.23
+
+```{r}
+stats.test.scores <- c(59, 60, 61, 62, 62, 63, 63, 64, 64, 64, 65, 65, 65, 65, 65, 65, 65, 65, 65, 66, 66, 67, 67, 68, 68, 69, 70, 70, 70, 70, 70, 71, 71, 72, 72, 73, 74, 74, 75, 77)
+boxplot(stats.test.scores,horizontal = T)
+```
+
+### mtcars Example
+
+```{r}
+data("mtcars")
+mtcars
+
+
+boxplot(mtcars$mpg)
+boxplot(mpg~cyl, data=mtcars)
+```
+
+
+## 2.5 Measures of the Center of the Data
+
+### Example 2.26
+```{r}
+aids <- c(3, 4, 8, 8, 10, 11, 12, 13, 14, 15, 15, 16, 16, 17, 17, 18, 21, 22, 22, 24, 24, 25, 26, 26, 27, 27, 29, 29, 31, 32, 33, 33, 34, 34, 35, 37, 40, 44, 44, 47)
+mean(aids)
+median(aids)
+```
+
+
+
+## 2.7 Measures of the Spread of the Data
+
+### Example 2.32
+
+```{r}
+age <- c(9, 9.5, 9.5, 10, 10, 10, 10, 10.5, 10.5, 10.5, 10.5, 11, 11, 11, 11, 11, 11, 11.5, 11.5, 11.5)
+mean(age)
+sd(age)^2
+sd(age)
+```
