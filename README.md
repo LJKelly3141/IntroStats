@@ -1,1 +1,1 @@
-# IntroStats
+# Introduction to Statistics
